@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IMA HTML5 Simple Demo</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- import CSS -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- import JavaScript -->
+  </head>
+  <body>
+    <div id="app">
+      <div class="free-content">
+        <br />
+        <p>Blog Content Here</p>
+        <p v-if="!dialogTableVisible && closedOut">Must finish video to access this freebie</p>
+        <el-button v-if="!adDone" type="text" @click="go">Enjoy This Freebie</el-button>
+        <div v-if="adDone">
+            <h1>Enjoy your freebie!</h1>
+        </div>
+        <p>Blog Content Here</p>
+        <br />
+      </div>
+
+      <el-dialog
+        class="ad-modal"
+        @opened="initializeAd" 
+        @closed="checkStatus"
+        title="Freebie will be delivered after ad" 
+        :visible.sync="dialogTableVisible"
+        :width="videoWidth"
+        :height="videoHeight"
+      >
+        <div id="mainContainer">
+          <div id="content">
+            <video id="contentElement">
+            </video>
+          </div>
+            <div id="adContainer"></div>
+        </div>
+      </el-dialog>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script type="text/javascript" src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+    <script type="text/javascript" src="ads.js"></script>
+    <script type="text/javascript" src="modal.js"></script>
+  </body>
+</html>

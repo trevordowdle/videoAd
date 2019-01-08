@@ -1,0 +1,3 @@
+var app=new Vue({el:'#app',beforeMount(){let width=getWidth();debugger;if(width<540){this.videoWidth="360px";this.videoHeight="220px";vWidth=320;vHeight=180}
+else if(width<760){this.videoWidth="520px";this.videoHeight="310px";vWidth=480;vHeight=270}},mounted(){},data:{message:'Hello Vue!',dialogTableVisible:!1,adDone:!1,closedOut:!1,videoWidth:"680px",videoHeight:"400px"},methods:{go:function(){this.dialogTableVisible=!0},initializeAd:function(){let viewAdd=init();viewAdd.then((result)=>{this.closedOut=!1;this.adDone=!0;this.dialogTableVisible=!1})},checkStatus:function(){if(!this.adDone){if(adsManager){adsManager.destroy()}
+this.closedOut=!0}}}})
